@@ -6,8 +6,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 import pandas as pd
 
-gamma_list = [0.01,0.005,0.001,0.0005,0.0001]
-c_list = [0.1,0.2,0.5,0.7,1,2,5,7,10,12]
+gamma_list = [0.01,0.005,0.001,0.0005]
+c_list = [0.1,0.2,0.5,0.7,1,2,5]
 
 train_frac = 0.8
 test_frac = 0.1
@@ -54,8 +54,14 @@ for gamma in gamma_list:
 
 metrics_df.set_index('hyperparameter',inplace=True)
 print(metrics_df)
-
+print('')
 print(f'Best Hyperparams : C : {c}, gamma : {gamma}')
 print(f'Accuracy of Training set with the best Model: {accuracy_score(y_train,best_model.predict(X_train))}')
 print(f'Accuracy of Dev set with the best Model: {accuracy_score(y_dev,best_model.predict(X_dev))}')
 print(f'Accuracy of Test set with the best Model: {accuracy_score(y_test,best_model.predict(X_test))}')
+
+print('')
+print(f"Size of the Image in Dataset: {digits.images[0].shape}")
+print('')
+
+
