@@ -5,7 +5,8 @@ from sklearn import svm
 
 
 def get_all_h_param_comb(params):
-    h_param_comb = [{"gamma": g, "C": c} for g in params['gamma'] for c in params['C']]
+    key = list(params.keys())
+    h_param_comb = [{key[0]: g, key[1]: c} for g in params[key[0]] for c in params[key[1]]]
     return h_param_comb
     
 def preprocess_digits(dataset):
@@ -100,6 +101,8 @@ def tune_and_save(clf, x_train, y_train, x_dev, y_dev, metric, h_param_comb, mod
     
     if type(clf) == svm.SVC:
         model_type = 'svm' 
+    else:
+        model_type = "decision_tree"
 
     best_model_name = model_type + "_" + best_param_config + ".joblib"
     if model_path == None:

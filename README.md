@@ -42,5 +42,3 @@ weighted avg       0.97      0.97      0.97       179
 Best hyperparameters were:
 {'gamma': 0.0001, 'C': 5}
 ```
-
-
